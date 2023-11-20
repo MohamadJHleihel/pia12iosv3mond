@@ -11,14 +11,18 @@ struct ShowJokeView: View {
     
     @Environment (\.dismiss) var dismiss
     
-    //@State var bigjoke : Chucknorrisinfo?
+    //@State var bigjoke : Chucknorrisinfo
     
-   // @StateObject var apistuff = ChuckAPI()
-    @State var bigapi : ChuckAPI
+    //@StateObject var apistuff = ChuckAPI()
+    
+    @StateObject var bigapi : ChuckAPI
+    
     var body: some View {
-        VStack{
-            Text(bigapi.thejoke!.value)
-                .font(.largeTitle)
+        VStack {
+            if bigapi.thejoke != nil {
+                Text(bigapi.thejoke!.value)
+                    .font(.largeTitle)
+            }
             
             Button(action: {
                 bigapi.loadapiRandom()
@@ -26,15 +30,17 @@ struct ShowJokeView: View {
                 Text("Random")
             })
             
+            
             Button(action: {
                 dismiss()
             }, label: {
                 Text("Close")
             })
+            
         }
     }
 }
 
 #Preview {
-    ShowJokeView ()
+    ShowJokeView(bigapi: ChuckAPI())
 }

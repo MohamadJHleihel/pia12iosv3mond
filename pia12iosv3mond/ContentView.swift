@@ -11,12 +11,8 @@ import SwiftUI
 
 
 struct ContentView: View {
-    
-
-    
+        
     @State var searchtext = ""
-    
-
     
     @StateObject var apistuff = ChuckAPI()
     
@@ -24,38 +20,28 @@ struct ContentView: View {
     
     
     
-    var isPreview: Bool {
-        return ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
-    }
-    
     var body: some View {
         
         ZStack {
             VStack {
-
                 VStack {
                     if apistuff.thejoke != nil {
-                        Text(apistuff.thejoke!.created_at)
+                        Text(ChuckHelper().fixdate(indate: apistuff.thejoke!.created_at))
                         Text(apistuff.thejoke!.value)
                         
                         Button(action: {
                             showjoke = true
                         }, label: {
-                            Text("Show Joke")
+                            Text("Show joke")
                         })
                         .sheet(isPresented: $showjoke, content: {
-                            ShowJokeView(bigjoke: apistuff.thejoke)
-                            Button(action: {
-                                showjoke = false
-                            }, label: {
-                                /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
-                            })
+                            ShowJokeView(bigapi: apistuff)
                         })
                     }
                 }
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                 .frame(height: 200.0)
-                .background(Color.gray)
+                .background(Color.blue)
 
                 if apistuff.errormessage != "" {
                     VStack {
@@ -65,12 +51,15 @@ struct ContentView: View {
                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                     .frame(height: 100.0)
                     .background(Color.red)
-
+                    
                 }
 
                 
                 HStack {
                     TextField("Search joke...", text: $searchtext)
+                        .onChange(of: searchtext) { oldValue, newValue in
+                            print("Changing from \(oldValue) to \(newValue)")
+                        }
                     
                     Button(action: {
                         apistuff.loadapiForSearch(jokesearch: searchtext)
@@ -80,11 +69,11 @@ struct ContentView: View {
                 }
                 
                 Button(action: {
-               
                     apistuff.loadapiRandom()
                 }, label: {
                     Text("Random joke")
                 })
+                
                 
                 List {
                     ForEach(apistuff.jokecategories, id: \.self) { cat in
@@ -126,20 +115,22 @@ struct ContentView: View {
             
         }
         .onAppear() {
-            Task {
-                await apistuff.loadcategories()
-            }
+            apistuff.loadcategories()
         }
-        
+        .onChange(of: apistuff.isloading) { oldValue, newValue in
+            if(apistuff.isloading) {
+                print("Nu ladda")
+            } else {
+                print("Inte ladda mer")
+            }
+            
+        }
         
     }
     
-
+    
 }
 
 #Preview {
     ContentView()
 }
-
-
-

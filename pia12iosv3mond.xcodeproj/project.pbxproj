@@ -14,6 +14,7 @@
 		9760D3A22B06079C001C2821 /* ChuckAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9760D3A12B06079C001C2821 /* ChuckAPI.swift */; };
 		9760D3A42B0619F4001C2821 /* ChuckModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9760D3A32B0619F4001C2821 /* ChuckModels.swift */; };
 		9760D3A62B061BC8001C2821 /* ShowJokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9760D3A52B061BC8001C2821 /* ShowJokeView.swift */; };
+		9760D3E02B0B496E001C2821 /* ChuckHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9760D3DF2B0B496E001C2821 /* ChuckHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		9760D3A12B06079C001C2821 /* ChuckAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckAPI.swift; sourceTree = "<group>"; };
 		9760D3A32B0619F4001C2821 /* ChuckModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckModels.swift; sourceTree = "<group>"; };
 		9760D3A52B061BC8001C2821 /* ShowJokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowJokeView.swift; sourceTree = "<group>"; };
+		9760D3DF2B0B496E001C2821 /* ChuckHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			children = (
 				9760D3932B02127F001C2821 /* pia12iosv3mondApp.swift */,
 				9760D3952B02127F001C2821 /* ContentView.swift */,
+				9760D3DF2B0B496E001C2821 /* ChuckHelper.swift */,
 				9760D3A52B061BC8001C2821 /* ShowJokeView.swift */,
 				9760D3A12B06079C001C2821 /* ChuckAPI.swift */,
 				9760D3A32B0619F4001C2821 /* ChuckModels.swift */,
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9760D3E02B0B496E001C2821 /* ChuckHelper.swift in Sources */,
 				9760D3A62B061BC8001C2821 /* ShowJokeView.swift in Sources */,
 				9760D3962B02127F001C2821 /* ContentView.swift in Sources */,
 				9760D3A22B06079C001C2821 /* ChuckAPI.swift in Sources */,
